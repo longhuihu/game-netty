@@ -6,7 +6,7 @@
 
     <groupId>com.github.longhuihu</groupId>
     <artifactId>game-netty</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <name>Game Netty</name>
     <description>library to simplify using tcp/websocket with netty, especially for game</description>
