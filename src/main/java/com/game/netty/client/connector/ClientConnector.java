@@ -76,6 +76,7 @@ public class ClientConnector {
 
     /**
      * @param codecConfig channel codec config
+     * @return this
      */
     public ClientConnector initCodec(ClientCodecConfig codecConfig) {
         this.codecConfig = codecConfig;
@@ -84,6 +85,7 @@ public class ClientConnector {
 
     /**
      * @param config channel option config
+     * @return this
      */
     public ClientConnector initChannel(ClientChannelConfig config) {
         this.config = config;

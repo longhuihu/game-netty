@@ -70,11 +70,6 @@ public abstract class GameChannel {
         }
     }
 
-    /**
-     * 越过编码器发送字节数据到底层
-     *
-     * @param byteBuf
-     */
     public final ChannelFuture writeBuf(ByteBuf byteBuf) {
         if (channel != null) {
             return channel.write(byteBuf);

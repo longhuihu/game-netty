@@ -18,6 +18,7 @@ package com.game.netty.config.codec;
 
 import com.game.netty.client.ClientMessage;
 import com.game.netty.client.codec.ClientMessageDecoder;
+import com.game.netty.client.codec.ClientMessageEncoder;
 import com.game.netty.client.codec.MessageBodyCodec;
 import com.game.netty.transform.BodyTransformer;
 
@@ -42,12 +43,12 @@ public class ClientCodecConfig {
     private boolean decoderKeepMessageBuf = false;
 
     /**
-     * @See ClientMessageEncoder.transformers
+     * @see ClientMessageEncoder
      */
     private final List<BodyTransformer> bodyEncodeTransformers = new ArrayList<>();
 
     /**
-     * @See ClientMessageDecoder.transformers
+     * @see ClientMessageDecoder
      */
     private final List<BodyTransformer> bodyDecodeTransformers = new ArrayList<>();
 
@@ -59,6 +60,7 @@ public class ClientCodecConfig {
     /**
      * CodecSupplier may be stateful, so the parameter is a factory
      *
+     * @param clientMessageHeadSize client message head size, must be 0,1,2,4,8
      * @param codecSupplier codecSupplier factory
      */
     public ClientCodecConfig(int clientMessageHeadSize, Supplier<MessageBodyCodec<?>> codecSupplier) {
@@ -68,6 +70,8 @@ public class ClientCodecConfig {
 
     /**
      * If MessageBodyCodec is stateless, a single instance is enough
+     * @param clientMessageHeadSize client message head size, must be 0,1,2,4,8
+     * @param codec codec instance
      */
     public ClientCodecConfig(int clientMessageHeadSize, MessageBodyCodec<?> codec) {
         this(clientMessageHeadSize, () -> codec);
@@ -88,7 +92,7 @@ public class ClientCodecConfig {
     /**
      * add body byte buf transformer during message encode
      * pay attention to the order
-     * @param transformers
+     * @param transformers one or more body transformers
      */
     public void addBodyEncodeTransformer(BodyTransformer ...transformers) {
         this.bodyEncodeTransformers.addAll(Arrays.asList(transformers));
@@ -97,7 +101,7 @@ public class ClientCodecConfig {
     /**
      * add body byte buf transformer during message decode
      * pay attention to the order, normally the revers of encode transformers
-     * @param transformers
+     * @param transformers one or more body transformers
      */
     public void addBodyDecodeTransformer(BodyTransformer ...transformers) {
         this.bodyDecodeTransformers.addAll(Arrays.asList(transformers));

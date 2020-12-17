@@ -29,6 +29,8 @@ public class GzipBodyCompressor implements BodyTransformer {
         /**
          * A policy allow you to indicate weather the message needs compress, via message head
          * This is something like http "Content-Encoding" strategy
+         * @param messageHead  head of client message
+         * @return compress message body or not
          */
         boolean needCompress(long messageHead);
     }
@@ -43,14 +45,6 @@ public class GzipBodyCompressor implements BodyTransformer {
         this.policy = policy;
     }
 
-    /**
-     * 从byteBuf执行压缩，返回压缩结果，调用者负责释放返回的buf
-     *
-     * @param messageHead
-     * @param byteBuf
-     * @param length
-     * @return
-     */
     @Override
     public void transformBody(long messageHead, ByteBuf bodyBuf) {
         if (!policy.needCompress(messageHead)) {

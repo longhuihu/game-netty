@@ -29,6 +29,8 @@ public class GzipBodyUncompressor implements BodyTransformer {
         /**
          * A policy allow you to indicate weather the message is compressed, via message head
          * This is something like http "Content-Encoding" strategy
+         * @param messageHead  head for ClientMessage
+         * @return uncompress message body or not
          */
         boolean needUnCompress(long messageHead);
     }

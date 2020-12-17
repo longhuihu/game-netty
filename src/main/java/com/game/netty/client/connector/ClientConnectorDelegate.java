@@ -35,16 +35,22 @@ public interface ClientConnectorDelegate<B> {
 
     /**
      * channel status event call back; event like CHANNEL_CONNECTED, CHANNEL_INACTIVE, CHANNEL_IDLE  will be fired on channel eventLoop, other may not
+     * @param channel the channel that fire event
+     * @param event the event
      */
     void onChannelStatusEvent(ClientConnectChannel channel, ChannelEvent event);
 
     /**
      * channel exception call back, this will be fired on channel eventLoop
+     * @param channel the channel that fire event
+     * @param e the exception happened
      */
     void onChannelExceptionCaught(ClientConnectChannel channel, Throwable e);
 
     /**
      * channel message call back, this will be fired on channel eventLoop
+     * @param channel the channel that fire event
+     * @param message the received message
      */
     void onChannelMessage(ClientConnectChannel channel, ClientMessage<B> message);
 }

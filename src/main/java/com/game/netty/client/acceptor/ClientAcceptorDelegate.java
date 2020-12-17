@@ -20,7 +20,6 @@ import com.game.netty.ChannelEvent;
 import com.game.netty.client.ClientMessage;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLEngine;
 
 /**
  * delegate to handle client Acceptor events
@@ -32,6 +31,8 @@ public interface ClientAcceptorDelegate<B> {
     /**
      * only called by ClientWebSocketAcceptor.
      * return valid SSLContext to use WSS, or null to use WS
+     *
+     * @return SSLContext
      */
     default SSLContext createSSLContext() {
         return null;
@@ -47,16 +48,25 @@ public interface ClientAcceptorDelegate<B> {
     /**
      * channel status event call back;
      * event like CHANNEL_CONNECTED, CHANNEL_INACTIVE, CHANNEL_IDLE  will be fired in channel eventLoop, other may not
+     *
+     * @param channel the channel of the event
+     * @param event   the event happened
      */
     void onChannelStatusEvent(ClientAcceptedChannel channel, ChannelEvent event);
 
     /**
      * channel exception call back, this will be fired in channel eventLoop
+     *
+     * @param channel the channel of the event
+     * @param e       the exception caught
      */
     void onChannelExceptionCaught(ClientAcceptedChannel channel, Throwable e);
 
     /**
      * channel message call back, this will be fired in channel eventLoop
+     *
+     * @param channel the channel of the event
+     * @param message the message received
      */
     void onChannelMessage(ClientAcceptedChannel channel, ClientMessage<B> message);
 }

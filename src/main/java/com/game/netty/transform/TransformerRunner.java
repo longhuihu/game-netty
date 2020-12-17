@@ -25,7 +25,11 @@ public class TransformerRunner {
 
     /**
      * apply transformers on message body
-     * @See BodyTransformer
+     * @see BodyTransformer
+     * @param transformers  transformer list to apply orderly
+     * @param msgBuf message body
+     * @param messageHead  message head
+     * @param headSize message head size
      */
     public static void runTransformers(List<BodyTransformer> transformers, ByteBuf msgBuf, long messageHead, int headSize) {
         int bodyIndex = headSize + Integer.BYTES;

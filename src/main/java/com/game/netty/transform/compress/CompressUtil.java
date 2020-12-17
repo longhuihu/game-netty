@@ -16,8 +16,10 @@ public class CompressUtil {
     /**
      * 对byteBuf的可读数据执行压缩（解压缩），并将结果写入byteBuf，调用者必须确保byteBuf可写，容量可扩展
      *
-     * @param byteBuf
-     * @param compress
+     * @param byteBuf  body content buf
+     * @param compress compress or uncompress
+     * @throws IOException io exception
+     * @throws DataFormatException data format exception
      */
     public static void handleCompress(ByteBuf byteBuf, boolean compress) throws IOException, DataFormatException {
         byte[] buf;

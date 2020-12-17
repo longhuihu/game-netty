@@ -27,13 +27,22 @@ public interface MessageBodyCodec<B> {
 
     /**
      * compute encoded message body byte size
+     *
+     * @param body target message body object
+     * @return encoded byte size
      */
-    default int bodyEncodeSize(B message) {
+    default int bodyEncodeSize(B body) {
         return 0;
     }
 
     /**
-     * encode message body and write into byteBuf
+     * encode message body and write into byteBuf.
+     * on write complete, the bodyBuf.readIndex should not change, the bodyBuf.writeIndex point to the body end.
+     * <p>
+     * GameNetty make sure out is a auto extending ByteBuf.
+     *
+     * @param body target message body
+     * @param out  byteBuf to write message
      */
     default void encodeBody(B body, ByteBuf out) {
     }
@@ -42,6 +51,11 @@ public interface MessageBodyCodec<B> {
      * decode byteBuf into body object：
      * 1. when called，bodyBuf.readIndex is at body position, param length is body byte size;
      * 2. implementation can not change bodyBuf
+     *
+     * @param messageHead message head
+     * @param bodyBuf     byteBuf that contains the message body
+     * @param length      the body size
+     * @return decoded body object
      */
     default B decodeMessageBody(long messageHead, ByteBuf bodyBuf, int length) {
         return null;

@@ -35,16 +35,22 @@ public interface ProxyAcceptorDelegate<H, B> {
 
     /**
      * channel status event call back; event like CHANNEL_CONNECTED, CHANNEL_INACTIVE, CHANNEL_IDLE  will be fired on channel eventLoop, other may not
+     * @param channel channel
+     * @param event event
      */
     void onChannelStatusEvent(ProxyAcceptedChannel channel, ChannelEvent event);
 
     /**
      * channel exception call back, this will be fired on channel eventLoop
+     * @param channel channel
+     * @param e caught exception
      */
     void onChannelExceptionCaught(ProxyAcceptedChannel channel, Throwable e);
 
     /**
      * channel message call back, this will be fired on channel eventLoop
+     * @param channel channel
+     * @param message received message
      */
     void onChannelMessage(ProxyAcceptedChannel channel, ProxyMessage<H, B> message);
 }

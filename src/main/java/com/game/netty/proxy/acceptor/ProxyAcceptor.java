@@ -68,6 +68,8 @@ public class ProxyAcceptor {
 
     /**
      * config codec
+     * @param codecConfig codec config
+     * @return this
      */
     public ProxyAcceptor initCodec(ProxyCodecConfig codecConfig) {
         this.codecConfig = codecConfig;
@@ -76,6 +78,8 @@ public class ProxyAcceptor {
 
     /**
      * config channel
+     * @param acceptorConfig channel config
+     * @return this
      */
     public ProxyAcceptor initChannel(ProxyChannelConfig acceptorConfig) {
         this.config = acceptorConfig;
@@ -84,6 +88,7 @@ public class ProxyAcceptor {
 
     /**
      * start listen
+     * @throws InterruptedException interrupt when bind
      */
     public void start() throws InterruptedException {
         sharedEncoder = new ProxyMessageEncoder<>(codecConfig.headCodec().get(), codecConfig.bodyCodec().get(), codecConfig.getClientMessageHeadSize());

@@ -53,8 +53,9 @@ public class ClientSocketAcceptor extends AbstractClientAcceptor {
     }
 
     /**
-     *  the user can use the encoder to encode ClientMessage to ByteBuf outside netty pipeline
-     * @see ClientMessageEncoder
+     * the user may use the encoder to encode ClientMessage to ByteBuf outside netty pipeline
+     *
+     * @return ClientMessageEncoder the configured encoder
      */
     public ClientMessageEncoder<?> getSharedEncoder() {
         return sharedEncoder;

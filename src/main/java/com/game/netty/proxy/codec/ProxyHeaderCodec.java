@@ -28,24 +28,25 @@ public interface ProxyHeaderCodec<H> {
     /**
      * 计算proxyHeader的编码长度
      *
-     * @param header
-     * @return
+     * @param header proxy head
+     * @return encoded byte length
      */
     int proxyHeadEncodeSize(H header);
 
     /**
      * 编码proxyHeader，写入输出缓冲区out
      *
-     * @param header
-     * @param out
+     * @param header proxy head
+     * @param out byte buf to write
      */
     void encodeProxyHead(H header, ByteBuf out);
 
     /**
      * 解码proxyMessage头部，in.readIndex指向head开始位置
      *
-     * @param in
-     * @param headLength
+     * @param in buf to read
+     * @param headLength  byte length of proxy head
+     * @return decoded proxy head object
      */
     H decodeProxyHead(ByteBuf in, int headLength);
 }

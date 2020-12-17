@@ -31,8 +31,8 @@ import java.util.List;
 /**
  * ProxyMessage Decoder for Netty Channel pipeline
  *
- * @param <H>
- * @param <B>
+ * @param <H> ProxyHead type
+ * @param <B> ClientMessage Body type
  */
 public class ProxyMessageDecoder<H, B> extends ByteToMessageDecoder {
 

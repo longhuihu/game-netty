@@ -20,7 +20,7 @@ import com.game.netty.client.acceptor.ClientAcceptedChannel;
 
 /**
  * SessionManager is part of acceptor, manage session for channels
- * @param <S>
+ * @param <S> Session type
  */
 public interface SessionManagerInterface<S extends SessionInterface> {
 

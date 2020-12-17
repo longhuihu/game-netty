@@ -51,6 +51,7 @@ public class ProxyCodecConfig {
     /**
      * ProxyHeaderCodec or MessageBodyCodec may be stateful, so the parameter is a factory
      *
+     * @param clientMessageHeadSize client message head size, must be 0,1,2,4,8
      * @param headCodecSupplier ProxyHeaderCodec factory
      * @param bodyCodecSupplier MessageBodyCodec factory
      */
@@ -63,6 +64,7 @@ public class ProxyCodecConfig {
     /**
      * If ProxyHeaderCodec or MessageBodyCodec is stateless, a single instance is enough
      *
+     * @param clientMessageHeadSize client message head size, must be 0,1,2,4,8
      * @param headerCodec ProxyHeaderCodec instance
      * @param bodyCodec   MessageBodyCodec instance
      */

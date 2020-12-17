@@ -88,8 +88,9 @@ public abstract class AbstractClientAcceptor {
 
     /**
      * @return 监听Channel
+     * @throws InterruptedException interrupt when start listen
      */
-    public abstract Channel start() throws Exception;
+    public abstract Channel start() throws InterruptedException;
 
     public SessionManagerInterface getSessionManager() {
         return sessionManager;

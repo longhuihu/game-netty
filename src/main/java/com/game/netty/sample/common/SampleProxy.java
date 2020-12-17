@@ -38,7 +38,6 @@ import com.game.netty.proxy.connector.ProxyConnector;
 import com.game.netty.transform.compress.GzipBodyUncompressor;
 import com.game.netty.transform.encrypt.RC4BodyEnDecryptor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -65,11 +64,6 @@ public class SampleProxy {
         initClientAcceptor(listenPort,logicServers);
     }
 
-    /**
-     * initialize socket listener, wait client connection
-     *
-     * @throws Exception
-     */
     public  void initClientAcceptor(int listenPort,List<ServerDefine> logicServers) throws Exception {
 
         ClientAcceptorDelegate<JSONObject> delegate = new ClientAcceptorDelegate<JSONObject>() {
@@ -96,9 +90,7 @@ public class SampleProxy {
                 String proxyHeader = channel.getSession().sessionId();
                 ProxyMessage<String, JSONObject> proxyMessage = new ProxyMessage<>(proxyHeader, message.retain());
 
-                /**
-                 * randomly forward message to a logic server
-                 */
+                //randomly forward message to a logic server
                 int index = random.nextInt(logicServers.size());
                 ServerDefine serverDefine = logicServers.get(index);
                 proxyConnector.getChannel(serverDefine.getServerId()).write(proxyMessage);

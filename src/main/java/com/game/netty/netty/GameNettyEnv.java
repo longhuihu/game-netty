@@ -28,24 +28,23 @@ public interface GameNettyEnv {
     GameNettyEnv DEFAULT = GameNettyUtil.ENV;
 
     /**
-     * Netty ServerChannel class
+     * @return Netty ServerChannel class
      */
     Class<? extends ServerChannel> serverChannelClass();
 
     /**
-     * Netty tcp channel class
+     * @return Netty tcp channel class
      */
     Class<? extends Channel> clientChannelClass();
 
     /**
-     * boss event loop group
+     * @return boss event loop group
      */
     EventLoopGroup createBossEventLoopGroup();
 
     /**
-     * work event loop group
-     *
      * @param nThreads, 0 for default
+     * @return work event loop group
      */
     EventLoopGroup createWorkerEventLoopGroup(int nThreads);
 }

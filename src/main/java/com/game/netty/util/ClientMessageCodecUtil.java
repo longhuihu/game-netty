@@ -51,6 +51,7 @@ public class ClientMessageCodecUtil {
      * read head from byteBuf-in，the read index of in will not change
      *
      * @param in       input byte buf
+     * @param readIndex   head position in buf
      * @param headSize head size
      * @return head  as long value
      */

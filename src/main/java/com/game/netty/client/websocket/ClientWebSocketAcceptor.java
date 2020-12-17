@@ -51,6 +51,8 @@ public class ClientWebSocketAcceptor extends AbstractClientAcceptor {
 
     /**
      * @param port     listen port
+     * @param path     web socket url path
+     * @param textMode send and receive text or binary data
      * @param delegate delegate to handle acceptor events
      */
     public ClientWebSocketAcceptor(int port, String path, boolean textMode, ClientAcceptorDelegate<?> delegate) {

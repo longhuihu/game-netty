@@ -28,6 +28,7 @@ public class GameByteBufAlloc {
      * alloc a heap buffer
      * @param ctxAllocator allocator under context
      * @param size required buf size
+     * @return new byte buf
      */
     public static ByteBuf heapBuf(ByteBufAllocator ctxAllocator, int size) {
         return unpooledByteBufAllocator.buffer(size);
